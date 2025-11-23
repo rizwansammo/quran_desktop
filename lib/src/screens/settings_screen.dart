@@ -7,15 +7,18 @@ class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   static const translations = {
-    "en.sahih": "Sahih International (English)",
-    "en.pickthall": "Pickthall (English)",
-    "bn.bengali": "Bengali Translation",
+    "20": "Sahih International (English)",
+    "19": "Pickthall (English)",
+    "161": "Bangla – Taisirul Quran",
+    "162": "Bangla – Rawai Al-bayan",
+    "163": "Bangla – Sheikh Mujib",
   };
 
   static const tafsirSources = {
-    "en.ibnkathir": "Tafsir Ibn Kathir (English)",
-    "bn.ibnkathir": "Tafsir Ibn Kathir (Bangla)",
-    "bn.abubakar_zakaria": "Abu Bakar Zakaria (Bangla)",
+    "169": "Tafsir Ibn Kathir (English)",
+    "215": "Tafsir Ibn Kathir (Bangla)",
+    "216": "Tafsir Ahsanul Bayan (Bangla)",
+    "219": "Abu Bakar Zakaria (Bangla)"
   };
 
   @override

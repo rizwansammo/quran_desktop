@@ -17,7 +17,6 @@ final List<String> arabicFonts = [
   "IndoPak",
 ];
 
-
 /// ----------------------
 /// THEME MODE PROVIDER
 /// ----------------------
@@ -50,7 +49,6 @@ final themeModeProvider =
   return ThemeModeNotifier();
 });
 
-
 /// ----------------------
 /// ARABIC FONT PROVIDER
 /// ----------------------
@@ -76,7 +74,6 @@ final arabicFontProvider =
     StateNotifierProvider<ArabicFontProvider, String>((ref) {
   return ArabicFontProvider();
 });
-
 
 /// ----------------------
 /// TRANSLATION PROVIDERS
@@ -105,20 +102,15 @@ class TranslationProvider extends StateNotifier<String> {
 
 final translationProvider1 =
     StateNotifierProvider<TranslationProvider, String>((ref) {
-  return TranslationProvider(_kTranslation1, defaultValue: "en.sahih");
+  return TranslationProvider(_kTranslation1, defaultValue: "20");
 });
 
 final translationProvider2 =
     StateNotifierProvider<TranslationProvider, String>((ref) {
-  return TranslationProvider(_kTranslation2, defaultValue: "bn.bengali");
+  return TranslationProvider(_kTranslation2, defaultValue: "161");
 });
-
-
-/// ----------------------
-/// TAFSIR PROVIDER
-/// ----------------------
 
 final tafsirProvider =
     StateNotifierProvider<TranslationProvider, String>((ref) {
-  return TranslationProvider(_kTafsirSource, defaultValue: "en.ibnkathir");
+  return TranslationProvider(_kTafsirSource, defaultValue: "169");
 });

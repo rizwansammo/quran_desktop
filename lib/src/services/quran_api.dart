@@ -1,80 +1,78 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+
 import '../models/ayah.dart';
 
 class QuranApi {
   static const String base = "https://api.quran.com/api/v4";
 
-  /// ----------------------
-  /// FETCH AYAT OF A SURAH
-  /// ----------------------
+  /// -----------------------------
+  /// FETCH AYAT OF A SURAH (Arabic)
+  /// -----------------------------
   static Future<List<Ayah>> fetchAyat(int surahNumber) async {
     final url = Uri.parse(
-      "$base/verses/by_chapter/$surahNumber?language=ar&words=false&fields=text_uthmani,text_indopak",
+      "$base/verses/by_chapter/$surahNumber?fields=text_uthmani,text_indopak&per_page=300",
     );
 
     final res = await http.get(url);
-
     if (res.statusCode != 200) {
-      throw Exception("Failed to fetch ayat for Surah $surahNumber");
+      throw Exception("Failed to load surah $surahNumber");
     }
 
-    final data = jsonDecode(res.body);
-    final ayatJson = data["verses"] as List;
+    final json = jsonDecode(res.body);
+    final List verses = json["verses"];
 
-    return ayatJson.map((item) {
+    return verses.map((v) {
       return Ayah(
-        id: item["id"] ?? 0,
-        surah: item["chapter_id"] ?? surahNumber,
-        ayahNumber: item["verse_number"] ?? 0,
-        textUthmani: item["text_uthmani"] ?? "",
-        textIndopak: item["text_indopak"] ?? "",
+        id: v["id"] ?? 0,                         // ayah ID
+        surah: v["chapter_id"] ?? surahNumber,
+        ayahNumber: v["verse_number"] ?? 0,
+        textUthmani: v["text_uthmani"] ?? "",
+        textIndopak: v["text_indopak"] ?? "",
         textKfgq: "",
       );
     }).toList();
   }
 
-  /// ----------------------
-  /// FETCH TRANSLATIONS FOR AN AYAH
-  /// ----------------------
+  /// ---------------------------------------
+  /// FETCH TRANSLATIONS FOR A SINGLE AYAH
+  /// ---------------------------------------
   static Future<List<Map<String, dynamic>>> fetchTranslations(
       int surah, int ayah, List<String> translationIds) async {
+    if (translationIds.isEmpty) return [];
+
     final joined = translationIds.join(",");
+
     final url = Uri.parse(
       "$base/verses/by_key/$surah:$ayah/translations?translations=$joined",
     );
 
     final res = await http.get(url);
+    if (res.statusCode != 200) return [];
 
-    if (res.statusCode != 200) {
-      return [];
-    }
+    final json = jsonDecode(res.body);
 
-    final data = jsonDecode(res.body);
-
-    return List<Map<String, dynamic>>.from(data["translations"]);
+    return List<Map<String, dynamic>>.from(json["translations"] ?? []);
   }
 
-  /// ----------------------
-  /// FETCH TAFSIR FOR AYAH
-  /// ----------------------
+  /// ---------------------------------------
+  /// FETCH TAFSIR (Correct Quran.com format)
+  /// ---------------------------------------
   static Future<String?> fetchTafsir(
-      int surah, int ayah, String tafsirSource) async {
+      int ayahId, String tafsirId) async {
+    // Correct API: /tafsirs/{id}/by_ayah/{ayah_id}
     final url = Uri.parse(
-      "$base/tafsirs/$tafsirSource/by_ayah/$surah:$ayah",
+      "$base/tafsirs/$tafsirId/by_ayah/$ayahId",
     );
 
     final res = await http.get(url);
-
-    if (res.statusCode != 200) {
-      return null;
-    }
+    if (res.statusCode != 200) return null;
 
     final data = jsonDecode(res.body);
-    final tafsirList = data["tafsirs"] as List<dynamic>;
+    final list = data["tafsirs"] as List?;
 
-    if (tafsirList.isEmpty) return null;
+    if (list == null || list.isEmpty) return null;
 
-    return tafsirList.first["text"];
+    return list.first["text"];
   }
 }

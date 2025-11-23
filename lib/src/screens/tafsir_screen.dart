@@ -33,9 +33,8 @@ class _TafsirScreenState extends ConsumerState<TafsirScreen> {
 
     try {
       final result = await QuranApi.fetchTafsir(
-        widget.ayah.surah,
-        widget.ayah.ayahNumber,
-        tafsirSource,
+        widget.ayah.id, // FIXED ✔
+        tafsirSource, // FIXED ✔
       );
 
       tafsirText = result ?? "No tafsir available for this ayah.";
