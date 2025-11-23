@@ -1,13 +1,7 @@
+![status](https://img.shields.io/badge/Status-In%20Development-yellow?style=for-the-badge)
+
 # 🕌 Quran Desktop App  
 ### A Modern, Fast & Beautiful Quran Reader for Windows
-
-<div align="center">
-<img src="assets/screenshots/surah_list.png" width="780"/>
-<br/>
-<img src="assets/screenshots/settings_screen.png" width="780"/>
-<br/>
-<img src="assets/screenshots/light_mode.png" width="780"/>
-</div>
 
 ---
 
@@ -97,7 +91,7 @@ https://git-scm.com/
 ### 4️⃣ Clone the Project
 
 ```
-git clone https://github.com/YOUR_USERNAME/quran_desktop.git
+git clone https://github.com/rizwansammo/quran_desktop.git
 cd quran_desktop
 ```
 
@@ -231,7 +225,7 @@ You can help with:
 
 ---
 
-## 🛣 Roadmap
+## 🛣 Upgrade Plan
 
 - [ ] Audio Recitations  
 - [ ] Mushaf Page View Mode  
@@ -244,18 +238,13 @@ You can help with:
 
 ## 📜 License
 
-MIT License — free to modify, use, and distribute.
+MIT License- free to modify, use, and distribute.
 
 ---
 
 ## ❤️ Acknowledgments
 
-- Quran.com API Team  
-- KFGQPC Quran Fonts  
-- Amiri & Scheherazade Font Authors  
-- Flutter Community  
-- **ChatGPT** (design, architecture, fixes)  
-- **GitHub Copilot** (coding assistance)  
+- Quran.com API   
 
 ---
 
@@ -263,4 +252,17 @@ MIT License — free to modify, use, and distribute.
 
 ### ⭐ If you find this project useful, please star the repository!
 
+</div>
+
+<div align="center">
+
+#### Screenshots:
+
+</div>
+<div align="center">
+<img src="assets/screenshots/surah_list.png" width="780"/>
+<br/>
+<img src="assets/screenshots/settings_screen.png" width="780"/>
+<br/>
+<img src="assets/screenshots/light_mode.png" width="780"/>
 </div>
