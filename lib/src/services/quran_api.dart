@@ -24,7 +24,7 @@ class QuranApi {
 
     return verses.map((v) {
       return Ayah(
-        id: v["id"] ?? 0,                         // ayah ID
+        id: v["id"] ?? 0, // ayah ID
         surah: v["chapter_id"] ?? surahNumber,
         ayahNumber: v["verse_number"] ?? 0,
         textUthmani: v["text_uthmani"] ?? "",
@@ -58,21 +58,22 @@ class QuranApi {
   /// ---------------------------------------
   /// FETCH TAFSIR (Correct Quran.com format)
   /// ---------------------------------------
-  static Future<String?> fetchTafsir(
-      int ayahId, String tafsirId) async {
-    // Correct API: /tafsirs/{id}/by_ayah/{ayah_id}
+  static Future<String?> fetchTafsir(int ayahId, String tafsirSource) async {
     final url = Uri.parse(
-      "$base/tafsirs/$tafsirId/by_ayah/$ayahId",
+      "$base/tafsirs/$tafsirSource/by_ayah/$ayahId",
     );
 
     final res = await http.get(url);
-    if (res.statusCode != 200) return null;
+
+    if (res.statusCode != 200) {
+      return null;
+    }
 
     final data = jsonDecode(res.body);
-    final list = data["tafsirs"] as List?;
+    final tafsir = data["tafsir"];
 
-    if (list == null || list.isEmpty) return null;
+    if (tafsir == null || tafsir["text"] == null) return null;
 
-    return list.first["text"];
+    return tafsir["text"];
   }
 }

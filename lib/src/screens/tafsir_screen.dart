@@ -29,12 +29,12 @@ class _TafsirScreenState extends ConsumerState<TafsirScreen> {
   }
 
   Future<void> _loadTafsir() async {
-    final tafsirSource = ref.read(tafsirProvider);
+    final tafsirSource = ref.read(tafsirProvider); // <-- Correct
 
     try {
       final result = await QuranApi.fetchTafsir(
-        widget.ayah.id, // FIXED ✔
-        tafsirSource, // FIXED ✔
+        widget.ayah.id,      // <-- Correct ayahId
+        tafsirSource,        // <-- Correct source
       );
 
       tafsirText = result ?? "No tafsir available for this ayah.";
@@ -60,7 +60,7 @@ class _TafsirScreenState extends ConsumerState<TafsirScreen> {
               : ListView(
                   padding: const EdgeInsets.all(16),
                   children: [
-                    // Arabic Ayah
+                    // Arabic Ayah text
                     Align(
                       alignment: Alignment.centerRight,
                       child: Text(
@@ -86,7 +86,7 @@ class _TafsirScreenState extends ConsumerState<TafsirScreen> {
 
                     const SizedBox(height: 24),
 
-                    // Tafsir Text
+                    // Tafsir text
                     Text(
                       tafsirText ?? "",
                       textAlign: TextAlign.left,
