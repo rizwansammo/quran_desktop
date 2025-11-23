@@ -20,16 +20,16 @@ class QuranApi {
     }
 
     final data = jsonDecode(res.body);
-    final List<dynamic> ayatJson = data["verses"];
+    final ayatJson = data["verses"] as List;
 
     return ayatJson.map((item) {
       return Ayah(
-        id: item["id"],
-        surah: item["chapter_id"],
-        ayahNumber: item["verse_number"],
+        id: item["id"] ?? 0,
+        surah: item["chapter_id"] ?? surahNumber,
+        ayahNumber: item["verse_number"] ?? 0,
         textUthmani: item["text_uthmani"] ?? "",
         textIndopak: item["text_indopak"] ?? "",
-        textKfgq: "", // placeholder for alternative mushaf fonts
+        textKfgq: "",
       );
     }).toList();
   }
