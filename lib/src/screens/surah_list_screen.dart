@@ -17,8 +17,22 @@ class SurahListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Quran Desktop"),
-      ),
+  title: const Text("Quran Desktop"),
+  actions: [
+    IconButton(
+      icon: const Icon(Icons.settings_outlined),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => const SettingsScreen(),
+          ),
+        );
+      },
+    ),
+  ],
+),
+
       body: ListView.builder(
         itemCount: surahs.length,
         itemBuilder: (context, i) {
