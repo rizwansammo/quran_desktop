@@ -28,5 +28,21 @@ flutter:
   uses-material-design: true
 
   assets:
-    # you can add custom fonts later
-    # - assets/fonts/
+    - assets/fonts/
+
+  fonts:
+    - family: Uthmani
+      fonts:
+        - asset: assets/fonts/Uthmani.otf
+
+    - family: AmiriQuran
+      fonts:
+        - asset: assets/fonts/AmiriQuran.ttf
+
+    - family: IndoPak
+      fonts:
+        - asset: assets/fonts/IndoPak.ttf
+
+    - family: Scheherazade
+      fonts:
+        - asset: assets/fonts/ScheherazadeNew.ttf
