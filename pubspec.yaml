@@ -1,0 +1,32 @@
+name: quran_desktop
+description: A modern minimal Quran desktop app for Windows
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  http: ^1.2.2
+  flutter_riverpod: ^2.5.1
+  shared_preferences: ^2.3.2
+  sqflite_common_ffi: ^2.3.3
+  path_provider: ^2.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    # you can add custom fonts later
+    # - assets/fonts/
