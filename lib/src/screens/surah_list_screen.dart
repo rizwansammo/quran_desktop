@@ -10,7 +10,7 @@ class SurahListScreen extends StatelessWidget {
     {"number": 3, "name": "آل عمران", "english": "Aal-Imran", "ayat": 200},
     {"number": 4, "name": "النساء", "english": "An-Nisa", "ayat": 176},
     {"number": 5, "name": "المائدة", "english": "Al-Ma'idah", "ayat": 120},
-    // TODO: Add all surahs (I will provide full list later)
+    // TODO: Add all surahs (Will provide full list later)
   ];
 
   @override
